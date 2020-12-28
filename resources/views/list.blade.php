@@ -56,7 +56,7 @@
 $(function () {
     $('.file-delete').click(function () {
         var path = $(this).data('path');
-        swal({
+        swal.fire({
             title: "{{ trans('admin.delete_confirm') }}",
             type: "warning",
             showCancelButton: true,
@@ -69,10 +69,10 @@ $(function () {
                 return new Promise(function(resolve) {
                     $.ajax({
                         method: 'delete',
-                        url: '{{ $url['delete'] }}',
+                        url: "{{ $url['delete'] }}",
                         data: {
                             'files[]':[path],
-                            _token:LA.token
+                            // _token:LA.token
                         },
                         success: function (data) {
                             $.pjax.reload('#pjax-container');
@@ -111,11 +111,11 @@ $(function () {
         var name = form.find('[name=new]').val();
         $.ajax({
             method: 'put',
-            url: '{{ $url['move'] }}',
+            url: "{{ $url['move'] }}",
             data: {
                 path: path,
                 'new': name,
-                _token:LA.token,
+                // _token:LA.token,
             },
             success: function (data) {
                 $.pjax.reload('#pjax-container');
@@ -138,7 +138,7 @@ $(function () {
         var formData = new FormData(this);
         $.ajax({
             method: 'POST',
-            url: '{{ $url['new-folder'] }}',
+            url: "{{ $url['new-folder'] }}",
             data: formData,
             async: false,
             success: function (data) {
@@ -167,7 +167,7 @@ $(function () {
     });
     $('.goto-url button').click(function () {
         var path = $('.goto-url input').val();
-        $.pjax({container:'#pjax-container', url: '{{ $url['index'] }}?path=' + path });
+        $.pjax({container:'#pjax-container', url: "{{ $url['index'] }}?path=" + path });
     });
     $('.file-select>input').iCheck({checkboxClass:'icheckbox_minimal-blue'});
     $('.file-delete-multiple').click(function () {
@@ -177,7 +177,7 @@ $(function () {
         if (!files.length) {
             return;
         }
-        swal({
+        swal.fire({
             title: "{{ trans('admin.delete_confirm') }}",
             type: "warning",
             showCancelButton: true,
@@ -190,10 +190,10 @@ $(function () {
                 return new Promise(function(resolve) {
                     $.ajax({
                         method: 'delete',
-                        url: '{{ $url['delete'] }}',
+                        url: "{{ $url['delete'] }}",
                         data: {
                             'files[]': files,
-                            _token:LA.token
+                            // _token:LA.token
                         },
                         success: function (data) {
                             $.pjax.reload('#pjax-container');
