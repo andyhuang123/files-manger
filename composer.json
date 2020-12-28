@@ -1,16 +1,14 @@
 {
     "name": "dcat-admin/files-manger",
-    "description": "Description...",
+    "description": "files manger",
     "type": "library",
     "keywords": ["dcat-admin", "extension"],
     "homepage": "https://github.com/dcat-admin/files-manger",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "your name",
-            "email": "your email"
-        }
-    ],
+    "authors": [{
+        "name": "coding",
+        "email": "356300546@qq.com"
+    }],
     "require": {
         "php": ">=7.1.0",
         "dcat/laravel-admin": "~2.0"
