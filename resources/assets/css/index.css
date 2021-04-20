@@ -2,3 +2,7 @@
     font-size: 1.3rem;
     cursor: pointer;
 }
+.file-manager-box {
+    display: flex;
+    flex-direction: column;
+}

@@ -1,19 +1,19 @@
 <?php
 
 namespace DcatAdmin\FilesManger\Http\Controllers;
- 
+
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use League\Flysystem\Adapter\Local;
 use Illuminate\Routing\Controller;
 use Dcat\Admin\Exception\Handler;
-  
+
 /**
  * Class MediaManager.
  */
-class MediaManager  extends Controller
-{ 
+class MediaManager extends Controller
+{
     /**
      * @var string
      */
@@ -162,11 +162,11 @@ class MediaManager  extends Controller
     {
         return [
             'path'       => $this->path,
-            'index'      => route('media-index'),
-            'move'       => route('media-move'),
-            'delete'     => route('media-delete'),
-            'upload'     => route('media-upload'),
-            'new-folder' => route('media-new-folder'),
+            'index'      => route('dcat.admin.media-index'),
+            'move'       => route('dcat.admin.media-move'),
+            'delete'     => route('dcat.admin.media-delete'),
+            'upload'     => route('dcat.admin.media-upload'),
+            'new-folder' => route('dcat.admin.media-new-folder'),
         ];
     }
 
@@ -174,13 +174,13 @@ class MediaManager  extends Controller
     {
         $files = array_map(function ($file) {
             return [
-                'download'  => route('media-download', compact('file')),
+                'download'  => route('dcat.admin.media-download', compact('file')),
                 'icon'      => '',
                 'name'      => $file,
                 'preview'   => $this->getFilePreview($file),
                 'isDir'     => false,
                 'size'      => $this->getFilesize($file),
-                'link'      => route('media-download', compact('file')),
+                'link'      => route('dcat.admin.media-download', compact('file')),
                 'url'       => $this->storage->url($file),
                 'time'      => $this->getFileChangeTime($file),
             ];
@@ -191,7 +191,7 @@ class MediaManager  extends Controller
 
     public function formatDirectories($dirs = [])
     {
-        $url = route('media-index', ['path' => '__path__', 'view' => request('view')]);
+        $url = route('dcat.admin.media-index', ['path' => '__path__', 'view' => request('view')]);
 
         $preview = "<a href=\"$url\"><span class=\"file-icon text-aqua\"><i class=\"fa fa-folder\"></i></span></a>";
 
@@ -203,7 +203,7 @@ class MediaManager  extends Controller
                 'preview'   => str_replace('__path__', $dir, $preview),
                 'isDir'     => true,
                 'size'      => '',
-                'link'      => route('media-index', ['path' => '/'.trim($dir, '/'), 'view' => request('view')]),
+                'link'      => route('dcat.admin.media-index', ['path' => '/'.trim($dir, '/'), 'view' => request('view')]),
                 'url'       => $this->storage->url($dir),
                 'time'      => $this->getFileChangeTime($dir),
             ];
@@ -227,7 +227,7 @@ class MediaManager  extends Controller
 
             $navigation[] = [
                 'name'  => $folder,
-                'url'   => route('media-index', ['path' => $path]),
+                'url'   => route('dcat.admin.media-index', ['path' => $path]),
             ];
         }
 

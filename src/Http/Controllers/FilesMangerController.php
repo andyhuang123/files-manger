@@ -6,7 +6,7 @@ use Dcat\Admin\Layout\Content;
 use Dcat\Admin\Admin;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
- 
+
 class FilesMangerController extends Controller
 {
     public function index(Content $content,Request $request)
@@ -19,11 +19,12 @@ class FilesMangerController extends Controller
             ->title('文件管理')
             ->description('文件列表')
             ->body(Admin::view("dcat-admin.files-manger::$view", [
-                        'list'   => $manager->ls(),
-                        'nav'    => $manager->navigation(),
-                        'url'    => $manager->urls(),
-                    ]));        
+                'list'   => $manager->ls(),
+                'nav'    => $manager->navigation(),
+                'url'    => $manager->urls(),
+            ]));
     }
+
     public function download(Request $request)
     {
         $file = $request->get('file');
