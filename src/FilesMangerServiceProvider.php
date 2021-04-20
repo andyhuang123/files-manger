@@ -8,10 +8,10 @@ use Dcat\Admin\Admin;
 class FilesMangerServiceProvider extends ServiceProvider
 {
 	protected $js = [
-        'js/index.js',
+        'vendor/dcat-admin-extensions/dcat-admin/files-manger/js/index.js',
     ];
 	protected $css = [
-		'css/index.css',
+		'vendor/dcat-admin-extensions/dcat-admin/files-manger/css/index.css',
 	];
 	// 注册菜单
 	protected $menu = [
@@ -28,8 +28,9 @@ class FilesMangerServiceProvider extends ServiceProvider
 	{
 		parent::init();
 
-		//
-		
+		Admin::js($this->js);
+		Admin::css($this->css);
+
 	}
 
 	public function settingForm()

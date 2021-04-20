@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('media', Controllers\FilesMangerController::class.'@index')->name('media-index');
 
 Route::get('media/download', Controllers\FilesMangerController::class.'@download')->name('media-download');
- 
+
 Route::delete('media/delete',  Controllers\FilesMangerController::class.'@delete')->name('media-delete');
 
 Route::put('media/move',  Controllers\FilesMangerController::class.'@move')->name('media-move');
